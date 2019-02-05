@@ -13,6 +13,7 @@ function loginUser(){
         cache: 'no-cache',
         body: JSON.stringify(data)
     })
+    
         .then((res) => res.json())
         .then(result => {
             // alert(JSON.stringify(result))
