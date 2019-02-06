@@ -11,7 +11,7 @@ fetch(data_url, {
 })
     .then((res) => res.json())
     .then(result => {
-        if(result.status === 200){
+        if(result.status === 200 || result.status === 404){
             
             // alert(JSON.stringify(result))
             // alert(result.data.length);
@@ -23,7 +23,7 @@ fetch(data_url, {
                                 '<button id="modalBtn" class="button" onclick="addIncidentRecord()"> + Records</button>'+
                                  '<tr> <th>#</th><th>title</th><th>Comment</th><th>Category</th><th>Location</th><th>Image</th><th>Status</th><th>Created On</th><th>Actions</th></tr>';
                 
-                if(result.message != "There exists no Redflag"){
+                if(result.status != 404){
                     for(i=0; i < result.data.length; i++){
                         data +=  '<tr><td>'+String(i+1)+'</td><td>'+result.data[i]["title"]+'</td><td>'+result.data[i]["comment"]+'</td><td>'+result.data[i]["category"]+'</td><td>['+result.data[i]["location"]+']</td><td>'+result.data[i]["image"]+'</td><td>'+result.data[i]["status"]+'</td><td>'+result.data[i]["createdOn"]+'</td><td><button onclick="edit('+result.data[i]["incident_id"]+','+result.data[i]["createdby"]+')" id="'+result.data[i]["incident_id"]+'">Edit</button>  <button>Delete</button></td></tr>';
                     }
