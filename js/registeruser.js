@@ -25,13 +25,13 @@ function RegisterUser(){
         })
             .then((res) => res.json())
             .then(result => {
-                // if(result.status === 201){
-                //    alert(JSON.stringify(result))
-                // }
-                // else{
-                //     alert(JSON.stringify(result))
-                // }
-                alert(JSON.stringify(result))
+                if(result.status === 201){
+                   alert("User successfully created")
+                }
+                else{
+                    alert(JSON.stringify(result))
+                }
+                // alert(JSON.stringify(result))
                 
             })
 
