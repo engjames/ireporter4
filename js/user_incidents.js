@@ -25,7 +25,13 @@ fetch(data_url, {
                 
                 if(result.status != 404){
                     for(i=0; i < result.data.length; i++){
-                        data +=  '<tr><td>'+String(i+1)+'</td><td>'+result.data[i]["title"]+'</td><td>'+result.data[i]["comment"]+'</td><td>'+result.data[i]["category"]+'</td><td>['+result.data[i]["location"]+']</td><td>'+result.data[i]["image"]+'</td><td>'+result.data[i]["status"]+'</td><td>'+result.data[i]["createdOn"]+'</td><td><button onclick="edit('+result.data[i]["incident_id"]+','+result.data[i]["createdby"]+')" id="'+result.data[i]["incident_id"]+'">Edit</button>  <button>Delete</button></td></tr>';
+                        if(result.data[i]["category"] === "red-flag"){
+                            category = 1
+                        }
+                        else{
+                            category = 0
+                        }
+                        data +=  '<tr><td>'+String(i+1)+'</td><td>'+result.data[i]["title"]+'</td><td>'+result.data[i]["comment"]+'</td><td>'+result.data[i]["category"]+'</td><td>['+result.data[i]["location"]+']</td><td>'+result.data[i]["image"]+'</td><td>'+result.data[i]["status"]+'</td><td>'+result.data[i]["createdOn"]+'</td><td><button onclick="edit('+result.data[i]["incident_id"]+','+result.data[i]["createdby"]+')" id="'+result.data[i]["incident_id"]+'">Edit</button>  <button onclick="mydeleteFunction('+result.data[i]["incident_id"]+','+category+')">Delete</button></td></tr>';
                     }
                     document.getElementById("incidents_table").innerHTML = data+"</table>";
                 }else{
