@@ -18,7 +18,6 @@ closeBtn.addEventListener('click', closeModal);
 //listen for outside click
 window.addEventListener('click', clickOutside);
 
-
 // When the user clicks the button, open the modal
 function openModal(){
 	modal.style.display = "block";
@@ -50,7 +49,7 @@ function clickOutside(e){
 function mydeleteFunction(incident_id, category) {
    //red-flag-category = 1
    //intervention-category = 0
-   alert(incident_id+"-->"+category);
+  
    var response = confirm("Are you sure you want to delete this incident?");
    if (response === true){
       
@@ -76,7 +75,7 @@ function mydeleteFunction(incident_id, category) {
          .then(result => {
             if(result.status === 200){
                alert("Incident with id "+incident_id+" has been deleted")
-               
+               window.location.href = 'user_incidents.html';
             }
             else{
                alert(JSON.stringify(result.error))
