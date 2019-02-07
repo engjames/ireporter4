@@ -33,16 +33,14 @@
            <h1>Update red-flag status <span class="closeBtn">&times;</span></h1>
     </div>
     <div class="modal-body">
-      <form class="modal_elements">
         <label for="fname">status</label>
-        <select id="select" name="name" required>
-          <option value="under_investigation">under investigation</option>
+        <input type="hidden" id="incident_id">
+        <select id="status" required>
+          <option value="under investigation">under investigation</option>
           <option value="rejected">rejected</option>
           <option value="resolved">resolved</option>
         </select>
-        <input type="submit" name="add_product" value="update" id="submit">
-      </form>
-
+        <input type="submit" onclick="get_new_status()" value="update">
     </div>
     <div>
       
@@ -54,6 +52,6 @@
  <script src="js/myscript.js"></script> 
  <script src="js/global.js"></script> 
  <script src="js/admin_manage_redflags.js"></script> 
-
+ <script src="js/update_incident_status.js"></script> 
 </body>
 </html>
