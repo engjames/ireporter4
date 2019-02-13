@@ -29,7 +29,7 @@ th, td {
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
-h1{
+h3{
   color:#484949;
   padding-left: 15px;
 }
@@ -45,11 +45,11 @@ input[type=text], input[type=number],input[type=password] {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
-#latitude {
+#latitude, #lat {
   width: 45%;
   margin-right: 58px;
 }
-#longitude {
+#longitude, #long {
   width: 45%;
  
 }
