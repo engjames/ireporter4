@@ -11,7 +11,7 @@ fetch(data_url, {
 })
     .then((res) => res.json())
     .then(result => {
-        if(result.status === 200 || result.status === 404){
+        if(result.status === 200 || result.status === 404 || result.status ==="failed"){
             
             // alert(JSON.stringify(result))
             // alert(result.data.length);
@@ -22,8 +22,13 @@ fetch(data_url, {
                 var data = '<table>'+
                                 '<button id="modalBtn" class="button" onclick="addIncidentRecord()"> + Records</button>'+
                                  '<tr> <th>#</th><th>title</th><th>Comment</th><th>Category</th><th>Location</th><th>Image</th><th>Status</th><th>Created On</th><th>Actions</th></tr>';
-                
-                if(result.status != 404){
+                if(result.status ==="failed"){
+                   
+                    
+                    window.location.href = "login.html"
+                    alert(result.message)
+                }
+                else if(result.status != 404){
                     for(i=0; i < result.data.length; i++){
                         if(result.data[i]["category"] === "red-flag"){
                             category = 1
@@ -31,7 +36,8 @@ fetch(data_url, {
                         else{
                             category = 0
                         }
-                        data +=  '<tr><td>'+String(i+1)+'</td><td>'+result.data[i]["title"]+'</td><td>'+result.data[i]["comment"]+'</td><td>'+result.data[i]["category"]+'</td><td>['+result.data[i]["location"]+']</td><td>'+result.data[i]["image"]+'</td><td>'+result.data[i]["status"]+'</td><td>'+result.data[i]["createdOn"]+'</td><td><button onclick="edit('+result.data[i]["incident_id"]+','+result.data[i]["createdby"]+')" id="'+result.data[i]["incident_id"]+'">Edit</button>  <button onclick="mydeleteFunction('+result.data[i]["incident_id"]+','+category+')">Delete</button></td></tr>';
+                        hidden_id = "e"+result.data[i]["incident_id"];
+                        data +=  '<tr><td>'+String(i+1)+'</td><td>'+result.data[i]["title"]+'</td><td>'+result.data[i]["comment"]+'</td><td>'+result.data[i]["category"]+'</td><td>['+result.data[i]["location"]+']</td><td>'+result.data[i]["image"]+'</td><td>'+result.data[i]["status"]+'</td><td>'+result.data[i]["createdOn"]+'</td><td><input type="hidden" id="'+hidden_id+'" value="'+result.data[i]["comment"]+'"><button onclick="EditIncidentRecord('+result.data[i]["incident_id"]+','+result.data[i]["createdby"]+',['+result.data[i]["location"]+'])" id="'+result.data[i]["incident_id"]+'">Edit</button>  <button onclick="mydeleteFunction('+result.data[i]["incident_id"]+','+category+')">Delete</button></td></tr>';
                     }
                     document.getElementById("incidents_table").innerHTML = data+"</table>";
                 }else{
