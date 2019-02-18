@@ -351,10 +351,11 @@ header li a:hover:not(.active){
 }
 
 .dot {
-  height: 120px;
-  width: 120px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   display: inline-block;
+  text-align: center;
 }
 #resolved_i {
   background-color:green;
