@@ -12,11 +12,6 @@ fetch(data_url, {
     .then((res) => res.json())
     .then(result => {
         if(result.status === 200 || result.status === 404 || result.status ==="failed"){
-            
-            // alert(JSON.stringify(result))
-            // alert(result.data.length);
-      
-           
                 var i = 0;
                 
                 var data = '<table>'+
@@ -44,12 +39,6 @@ fetch(data_url, {
                     
                     document.getElementById("incidents_table").innerHTML = data +"<tr><td colspan='9'>There are no incidents yet!</td></tr></table>";
                 }
-               
-            //    +
-            //     
-           
-         
-
         }
         else{
             alert(alert(JSON.stringify(result)));

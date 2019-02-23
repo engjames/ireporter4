@@ -11,7 +11,6 @@ function RegisterUser(){
     
     if(firstname != "" && lastname != "" && email != "" && password != ""){
         const data = {"firstname":firstname, "lastname":lastname, "email":email, "password":password, "isAdmin":isAdmin};
-        // alert(JSON.stringify(data));
         var register_url=SERVER_PATH+"auth/signup";
         fetch(register_url, {
             method: 'POST',
@@ -31,7 +30,6 @@ function RegisterUser(){
                 else{
                     alert(JSON.stringify(result))
                 }
-                // alert(JSON.stringify(result))
                 
             })
 

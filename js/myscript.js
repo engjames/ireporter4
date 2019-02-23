@@ -47,10 +47,7 @@ function clickOutside(e){
 
 }
 
-function mydeleteFunction(incident_id, category) {
-   //red-flag-category = 1
-   //intervention-category = 0
-  
+function mydeleteFunction(incident_id, category) {  
    var response = confirm("Are you sure you want to delete this incident?");
    if (response === true){
       
@@ -96,11 +93,8 @@ function EditIncidentRecord(incident_id, user_id, location){
 var modal = document.getElementById('EditModal');
 
 // // Get the button that opens the modal
-// result = location[1]
-// alert(result)
 var modalBtn  = document.getElementById(incident_id);
 var comment = document.getElementById("e"+incident_id).value;
-// alert(comment)
 document.getElementById('location_comment_id').value = incident_id;
 document.getElementById('edit_comment').value = comment;
 document.getElementById('edit_long').value = parseInt(location[0]);
@@ -174,14 +168,9 @@ function save_changes(){
       })
           .then((res) => res.json())
           .then(result => {
-            //   if(result.status === 201){
-            //       window.location.href = 'user_incidents.html';
-            //   }
-            //   else{
-            //       alert(JSON.stringify(result))
-            //   }
-              alert(JSON.stringify(result))
-              window.location.href = 'user_incidents.html';
+     
+            alert(JSON.stringify(result))
+            window.location.href = 'user_incidents.html';
               
           })
    
