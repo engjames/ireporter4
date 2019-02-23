@@ -72,8 +72,14 @@ function mydeleteFunction(incident_id, category) {
          .then((res) => res.json())
          .then(result => {
             if(result.status === 200){
-               alert("Incident with id "+incident_id+" has been deleted")
-               window.location.href = 'user_incidents.html';
+               var msg = document.getElementById('mess');
+               msg.style.display="block";
+               msg.innerHTML = "Successfully deleted the incident record with id "+incident_id+""
+               setInterval(function(){
+                  msg.style.display="none"
+                   
+               },5000);
+               // window.location.href = 'user_incidents.html';
             }
             else{
                alert(JSON.stringify(result.error))
@@ -148,7 +154,13 @@ function save_changes(){
    var incident_id = document.getElementById('location_comment_id').value;
 
    if(comment == "" || longitude =="" || latitude==""){
-      alert("Comment/location are empty")
+      var msg = document.getElementById('messages');
+      msg.style.display="block";
+      msg.innerHTML = "Location or comments field is empty"
+      setInterval(function(){
+          msg.style.display="none"
+          
+      },5000);
    }
    else{
       var location = [longitude,latitude]
@@ -168,8 +180,13 @@ function save_changes(){
       })
           .then((res) => res.json())
           .then(result => {
-     
-            alert(JSON.stringify(result))
+            var msg = document.getElementById('mess');
+            msg.style.display="block";
+            msg.innerHTML = "Successfully updated the incident record"
+            setInterval(function(){
+               msg.style.display="none"
+                
+            },5000);
             window.location.href = 'user_incidents.html';
               
           })

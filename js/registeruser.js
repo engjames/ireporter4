@@ -3,11 +3,7 @@ function RegisterUser(){
     var lastname = document.getElementById('lastname').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
-    var usertype = document.getElementById('usertype').value;
     var isAdmin = false;
-    if(usertype === "admin"){
-        isAdmin = true;
-    }
     
     if(firstname != "" && lastname != "" && email != "" && password != ""){
         const data = {"firstname":firstname, "lastname":lastname, "email":email, "password":password, "isAdmin":isAdmin};
@@ -25,7 +21,14 @@ function RegisterUser(){
             .then((res) => res.json())
             .then(result => {
                 if(result.status === 201){
-                   alert("User successfully created")
+                    var msg = document.getElementById('messages');
+                    msg.style.display="block";
+                    msg.innerHTML = "User successfully created"
+                    setInterval(function(){
+                        msg.style.display="none"
+                        
+                    },5000);
+                    
                 }
                 else{
                     alert(JSON.stringify(result))

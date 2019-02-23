@@ -65,8 +65,14 @@ function get_new_status(){
         })
             .then((res) => res.json())
             .then(result => {
-                alert(JSON.stringify(result))
-                window.location.href = 'admin_manage_redflags.html';
+                var msg = document.getElementById('mess');
+                msg.style.display="block";
+                msg.innerHTML = "Succefully updated the record incident"
+                setInterval(function(){
+                    msg.style.display="none"
+                    
+                },5000);
+                // window.location.href = 'admin_manage_redflags.html';
                 
             })
 
