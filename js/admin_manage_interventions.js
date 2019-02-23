@@ -29,7 +29,13 @@ fetch(interventions_url, {
 
         }
         else{
-            alert(alert(JSON.stringify(result)));
+            var msg = document.getElementById('messages');
+            msg.style.display="block";
+            msg.innerHTML = "No intervention records found"
+            setInterval(function(){
+                msg.style.display="none"
+                
+            },5000);
         }
         
     })
