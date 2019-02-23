@@ -26,7 +26,13 @@ function loginUser(){
                 }
             }
             else{
-                alert(JSON.stringify(result));
+                var mssg = document.getElementById('message');
+                mssg.style.display="block";
+                mssg.innerHTML = "Missing or wrong email format or password is less than five characters"
+                setInterval(function(){
+                    mssg.style.display="none"
+                    
+                },5000);
             }
             
         })

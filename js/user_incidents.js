@@ -82,7 +82,13 @@ function getUrl(){
                 // window.location.href = 'user_incidents.html';
             }
             else{
-                alert(JSON.stringify(result))
+                var msg = document.getElementById('messages');
+                msg.style.display="block";
+                msg.innerHTML = "Title, description and location can not be empty"
+                setInterval(function(){
+                   msg.style.display="none"
+                    
+                },5000);
             }
             
         })
