@@ -1,11 +1,11 @@
-function update_status(incident_id, user_id){
+function update_user(user_id){
     //Modal for the add Products
  // Get the modal
  var modal = document.getElementById('simpleModal');
  
  // Get the button that opens the modal
- var modalBtn  = document.getElementById(incident_id);
- document.getElementById('incident_id').value = incident_id; 
+ var modalBtn  = document.getElementById(user_id);
+ document.getElementById('get_id').value = user_id; 
  // Get the <span> element that closes the modal
  var closeBtn = document.getElementsByClassName("closeBtn")[0];
  
@@ -46,13 +46,13 @@ function update_status(incident_id, user_id){
 }
 
 
-function get_new_status(){
-    new_status = document.getElementById("status").value;
-    incident_id = document.getElementById("incident_id").value;
-    const data = {"status":new_status}
+function get_new_role(){
+    new_role = document.getElementById("user_status").value;
+    user_id = document.getElementById("get_id").value;
+    const data = {"user_status":new_role, "user":user_id}
 
-    var update_incident_url=SERVER_PATH+"redflags/"+incident_id+"/status";
-        fetch(update_incident_url, {
+    var update_user_url=SERVER_PATH+"user/"+user_id+"/status";
+        fetch(update_user_url, {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -65,14 +65,14 @@ function get_new_status(){
         })
             .then((res) => res.json())
             .then(result => {
-                // if(result.status === 201){
-                //    alert("User successfully created")
-                // }
-                // else{
-                //     alert(JSON.stringify(result))
-                // }
-                alert(JSON.stringify(result))
-                window.location.href = 'admin_manage_interventions.html';
+                var msg = document.getElementById('mess');
+                msg.style.display="block";
+                msg.innerHTML = "Successfully changed the user role to admin"
+                setInterval(function(){
+                   msg.style.display="none"
+                    
+                },5000);
+                // window.location.href = 'admin_get_all_users.html';
                 
             })
 

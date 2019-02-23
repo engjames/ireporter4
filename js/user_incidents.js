@@ -12,11 +12,6 @@ fetch(data_url, {
     .then((res) => res.json())
     .then(result => {
         if(result.status === 200 || result.status === 404 || result.status ==="failed"){
-            
-            // alert(JSON.stringify(result))
-            // alert(result.data.length);
-      
-           
                 var i = 0;
                 
                 var data = '<table>'+
@@ -44,12 +39,6 @@ fetch(data_url, {
                     
                     document.getElementById("incidents_table").innerHTML = data +"<tr><td colspan='9'>There are no incidents yet!</td></tr></table>";
                 }
-               
-            //    +
-            //     
-           
-         
-
         }
         else{
             alert(alert(JSON.stringify(result)));
@@ -58,15 +47,8 @@ fetch(data_url, {
     })
 
 
-
-
-
-
-
 function getUrl(){
-    // var photo = document.getElementById("image-file").files[0];
-  
-    
+ 
     var title = document.getElementById('title').value;
     var comment = document.getElementById('comment').value;
     var category = document.getElementById('category').value;
@@ -75,8 +57,6 @@ function getUrl(){
     
     var location = [longitude,latitude]
     const data = {"title":title, "comment":comment, "location":String(location), "category":category};
-    
-    // alert(JSON.stringify(data));
     var register_url=SERVER_PATH+"interventions";
     fetch(register_url, {
         method: 'POST',
@@ -92,12 +72,18 @@ function getUrl(){
         .then((res) => res.json())
         .then(result => {
             if(result.status === 201){
-                window.location.href = 'user_incidents.html';
+                var msg = document.getElementById('mess');
+                msg.style.display="block";
+                msg.innerHTML = "Successfully added a new record"
+                setInterval(function(){
+                   msg.style.display="none"
+                    
+                },5000);
+                // window.location.href = 'user_incidents.html';
             }
             else{
                 alert(JSON.stringify(result))
             }
-            // alert(JSON.stringify(result))
             
         })
   

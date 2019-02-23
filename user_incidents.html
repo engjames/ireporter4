@@ -4,7 +4,10 @@
 	<title>iReporter</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+
 </head>
 <body>
 <header> 
@@ -14,21 +17,18 @@
   <a href="red_flag.html"><img  src = "img/logo2.png" id ="hed"></a> 
   <li><a href="login.html">log out</a></li>
   <li><a href="profile.html">profile</a></li>
-  <!-- <li><a href="intervention.html">interventions</a></li> -->
   <li><a class="active" href="red_flag.html">Records(Red-Flag or Intervation)</a></li>
 </div>
   </ul>
 </header>
   <h1 id = 'heading'>Red-Flags or Intervation Records</h1> 
+  <div id ="messages" style ="background-color: red; color:white;width:40%;"></div>
+  <div id ="mess" style ="background-color: green; color:white;width:40%;"></div>
 <section id="incidents_table">
  
 </section>
 
-
-<!-- The Modal for add products-->
 <div id="simpleModal" class="modal">
-
-  <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
            <h1>Add Record <span class="closeBtn">&times;</span></h1>
@@ -38,14 +38,15 @@
         <label for="title">Title</label>
         <input type="text" placeholder="Enter Title" id="title" required>
         <label for="desc">Description</label>
-        <input type="text" placeholder="Enter Description" id="comment" required>
+        <textarea name="comment" id="comment" cols="90" rows="5"placeholder="Enter Description" required></textarea>
         <label for="type">Type</label>
         <select id="category" required>
           <option value="red-flag">Red-Flag</option>
           <option value="intervention">Intervation</option>
         </select>
-        <label for="attatchment">Attatch Image</label>
-        <input type="file" id="image-file" required>
+        <!-- <label for="attatchment">Attatch Image</label> -->
+        <!-- <input type="file" id="image-file" required>  -->
+        <div id='map' style='width: 100%; height: 90px;'></div>
         <label for="fname">Location</label><br/>
         <input type="number"id="latitude" placeholder="Enter Latitude" required>
         <input type="number" placeholder="Enter Longitude" id="longitude" required><br/><br/>
@@ -59,6 +60,20 @@
   </div>
 
 </div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoia2lzdXVsZWphbWVzMSIsImEiOiJjanM0aGQ2b2kwNGxzM3lvNWEwaG5kd2Z1In0.t1BICXHR5e-Je18WcTbk8g';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [32.57669254964398, 0.2510635733600992],
+  });
+  map.on('click', function (e) {
+  document.getElementById('info').innerHTML =
+    `<label >Geoloacation</label>
+    <input type="text" value='${JSON.stringify(e.lngLat)}' id = "afterclick" placeholder="Main subject">`
+    
+    });
+</script>
 
 
 <!-- modal for edit products -->

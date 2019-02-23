@@ -11,17 +11,12 @@ fetch(data_url, {
 })
     .then((res) => res.json())
     .then(result => {
-       
-        // if(result.status === 200){
-           
-            document.getElementById('no_of_interventions_rejected').innerHTML = result.profile['no_of_interventions_rejected']
-            document.getElementById('no_of_interventions_resolved').innerHTML = result.profile['no_of_interventions_resolved']
-            document.getElementById('no_of_interventions_under_investigation').innerHTML = result.profile['no_of_interventions_under_investigation']
-            document.getElementById('no_of_redflags_rejected').innerHTML = result.profile['no_of_redflags_rejected']
-            document.getElementById('no_of_redflags_resolved').innerHTML = result.profile['no_of_redflags_resolved']
-            document.getElementById('no_of_redflags_under_investigation').innerHTML = result.profile['no_of_redflags_under_investigation']
-        // }
-        
+        document.getElementById('no_of_interventions_rejected').innerHTML = result.profile['no_of_interventions_rejected']
+        document.getElementById('no_of_interventions_resolved').innerHTML = result.profile['no_of_interventions_resolved']
+        document.getElementById('no_of_interventions_under_investigation').innerHTML = result.profile['no_of_interventions_under_investigation']
+        document.getElementById('no_of_redflags_rejected').innerHTML = result.profile['no_of_redflags_rejected']
+        document.getElementById('no_of_redflags_resolved').innerHTML = result.profile['no_of_redflags_resolved']
+        document.getElementById('no_of_redflags_under_investigation').innerHTML = result.profile['no_of_redflags_under_investigation']
     })
 
 

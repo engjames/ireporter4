@@ -65,14 +65,14 @@ function get_new_status(){
         })
             .then((res) => res.json())
             .then(result => {
-                // if(result.status === 201){
-                //    alert("User successfully created")
-                // }
-                // else{
-                //     alert(JSON.stringify(result))
-                // }
-                alert(JSON.stringify(result))
-                window.location.href = 'admin_manage_redflags.html';
+                var msg = document.getElementById('mess');
+                msg.style.display="block";
+                msg.innerHTML = "Succefully updated the record incident"
+                setInterval(function(){
+                    msg.style.display="none"
+                    
+                },5000);
+                // window.location.href = 'admin_manage_redflags.html';
                 
             })
 

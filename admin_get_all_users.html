@@ -14,15 +14,14 @@
   <a href="admin_manage_redflags.html"><img  src = "img/logo2.png" id="hed"></a> 
   <li><a href="login.html">log out</a></li>
   <li><a href="admin_manage_interventions.html">interventions</a></li>
-  <li><a  class="active" href="admin_manage_redflags.html">red-flags</a></li>
-  <li><a href="admin_get_all_users.html">Users</a></li>
+  <li><a  href="admin_manage_redflags.html">red-flags</a></li>
+  <li><a class="active" href="admin_get_all_users.html">Users</a></li>
 </div>
   </ul>
 </header>
-  <h1 id = 'heading'>Red-Flags</h1>
-  <div id ="mess" style ="background-color: green; color:white;width:40%;"></div> 
-<section id="incidents_table">
- 
+  <h1 id = 'heading'>List Of All Users</h1> 
+  <div id ="mess" style ="background-color: green; color:white;width:40%;"></div>
+<section id="users_table">
 </section>
 
 
@@ -30,23 +29,21 @@
 <div id="simpleModal" class="modal">
 
   <!-- Modal content -->
+  
   <div class="modal-content">
-    <div class="modal-header">
-           <h1>Update red-flag status <span class="closeBtn">&times;</span></h1>
-    </div>
     <div class="modal-body">
-        <label for="fname">status</label>
-        <input type="hidden" id="incident_id">
-        <select id="status" required>
-          <option value="under investigation">under investigation</option>
-          <option value="rejected">rejected</option>
-          <option value="resolved">resolved</option>
+      <div class="modal-header">
+        <p>Promote a user to admin <span class="closeBtn">&times;</span></p>
+      </div>
+        <label for="fname">Update user status</label>
+        <input type="hidden" id="get_id">
+        <select id="user_status" required>
+          <option value="true">Admin Rights</option>
         </select>
-        <input type="submit" onclick="get_new_status()" value="update">
+      <button onclick="get_new_role()">submit</button>
     </div>
-    <div>
-      
-    </div>
+  <div>    
+  </div>
   </div>
 
 </div>
@@ -55,5 +52,7 @@
  <script src="js/global.js"></script> 
  <script src="js/admin_manage_redflags.js"></script> 
  <script src="js/update_incident_status.js"></script> 
+ <script src="js/get_all_users.js"></script> 
+ <script src="js/update_user_role.js"></script> 
 </body>
 </html>

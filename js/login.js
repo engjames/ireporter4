@@ -15,10 +15,6 @@ function loginUser(){
     })
         .then((res) => res.json())
         .then(result => {
-            // alert(JSON.stringify(result))
-            // alert(JSON.stringify(result.status))
-            // alert(JSON.stringify(result.data[0]['token']))
-            // alert(JSON.stringify(result.data[0]['user']['isadmin']))
             if(result.status === 200){
                 if(result.data[0]['user']['isadmin'] == "false"){
                     localStorage.setItem("auth-token",result.data[0]['token']);
