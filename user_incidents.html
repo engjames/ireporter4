@@ -16,7 +16,8 @@
   <ul>
   <a href="red_flag.html"><img  src = "img/logo2.png" id ="hed"></a> 
   <li><a href="login.html">log out</a></li>
-  <li><a href="profile.html">profile</a></li>
+  <li><a href="profile.html">Profile</a></li>
+  <li><a href="statistics.html">Statistics</a></li>
   <li><a class="active" href="red_flag.html">Records(Red-Flag or Intervation)</a></li>
 </div>
   </ul>
@@ -44,8 +45,6 @@
           <option value="red-flag">Red-Flag</option>
           <option value="intervention">Intervation</option>
         </select>
-        <!-- <label for="attatchment">Attatch Image</label> -->
-        <!-- <input type="file" id="image-file" required>  -->
         <div id='map' style='width: 100%; height: 90px;'></div>
         <label for="fname">Location</label><br/>
         <input type="number"id="latitude" placeholder="Enter Latitude" required>
@@ -61,18 +60,22 @@
 
 </div>
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1Ijoia2lzdXVsZWphbWVzMSIsImEiOiJjanM0aGQ2b2kwNGxzM3lvNWEwaG5kd2Z1In0.t1BICXHR5e-Je18WcTbk8g';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [32.57669254964398, 0.2510635733600992],
-  });
-  map.on('click', function (e) {
-  document.getElementById('info').innerHTML =
-    `<label >Geoloacation</label>
-    <input type="text" value='${JSON.stringify(e.lngLat)}' id = "afterclick" placeholder="Main subject">`
-    
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia2lzdXVsZWphbWVzMSIsImEiOiJjanM0aGQ2b2kwNGxzM3lvNWEwaG5kd2Z1In0.t1BICXHR5e-Je18WcTbk8g';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [32.57505249978601,0.3206802144422909],
+        zoom: 9 
     });
+    var marker = new mapboxgl.Marker()
+    .setLngLat([0, 0])
+    .addTo(map);
+
+    map.on('click', function (e) {
+        document.getElementById('longitude').value = JSON.stringify(e.lngLat['lng']);
+        document.getElementById('latitude').value = JSON.stringify(e.lngLat['lat']);
+          marker.setLngLat(e.lngLat);
+        });
 </script>
 
 
@@ -89,11 +92,31 @@
             <label for="comment">Comment</label>
             <input type="text" id="edit_comment" required>
             <label for="location">Location</label><br/>
+            <div id='mappers' style='width: 100%; height: 90px;'></div>
             <input type="number" id="edit_lat" required>
             <input type="number" id="edit_long" required><br/><br/>
             <input type="hidden" id="location_comment_id">
             <button onclick="save_changes()">Save Changes</button>
         </div>
+
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoia2lzdXVsZWphbWVzMSIsImEiOiJjanM0aGQ2b2kwNGxzM3lvNWEwaG5kd2Z1In0.t1BICXHR5e-Je18WcTbk8g';
+            var mappers = new mapboxgl.Map({
+                container: 'mappers',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                center: [32.57505249978601,0.3206802144422909],
+                zoom: 9 
+            });
+            var marker = new mapboxgl.Marker()
+            .setLngLat([0, 0])
+            .addTo(mappers);
+        
+            mappers.on('click', function (e) {
+                document.getElementById('edit_long').value = JSON.stringify(e.lngLat['lng']);
+                document.getElementById('edit_lat').value = JSON.stringify(e.lngLat['lat']);
+                  marker.setLngLat(e.lngLat);
+                });
+        </script>
 
   </div></div></div>
 

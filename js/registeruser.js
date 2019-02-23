@@ -31,14 +31,26 @@ function RegisterUser(){
                     
                 }
                 else{
-                    alert(JSON.stringify(result))
+                    var mssg = document.getElementById('message');
+                    mssg.style.display="block";
+                    mssg.innerHTML = "Wrong email format or password should be more than five "
+                    setInterval(function(){
+                        mssg.style.display="none"
+                        
+                    },5000);
                 }
                 
             })
 
     }
     else{
-        alert("Lastname or firstname or email or isadmin should not be empty ");
+        var mssg = document.getElementById('message');
+        mssg.style.display="block";
+        mssg.innerHTML = "All fields should be filled or password should be more than five "
+        setInterval(function(){
+            mssg.style.display="none"
+            
+        },5000);
     }
     
         

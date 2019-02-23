@@ -4,7 +4,8 @@
 	<title>iReporter</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
 <body>
 <header> 
@@ -12,59 +13,23 @@
   <ul>
   <a href="red_flag.html"><img  src = "img/logo2.png" id ="hed"></a>
   <li><a href="login.html">log out</a></li>
-  <li><a class="active" href="profile.html">profile</a></li>
-  <!-- <li><a href="intervention.html">intervention</a></li> -->
+  <li><a class="active" href="profile.html">Profile</a></li>
+  <li><a href="statistics.html">Statistics</a></li>
   <li><a href="user_incidents.html">Records(Red-Flag or Intervation)</a></li>
 </div>
   </ul>
 </header>
-<section>
- 
-  <div style="text-align:center">
-    <h1>Updates on Red flags / Interventions</h1>
-    <p>
-    <button class="dot" id="resolved_i"><div id="no_of_interventions_rejected" ></div></button>
-    <button class="dot" id="resolved_R"><span id="no_of_interventions_resolved"></span></button>
-    <button class="dot" id="yet_to_resolved_R"><span id="no_of_interventions_under_investigation"></span></button>
-    <button class="dot" id="yet_to_resolved_i"><span id="no_of_redflags_rejected"></span></button>
-    <button class="dot"  id="rejected_i"><span id="no_of_redflags_resolved"></span></button>
-    <button class="dot" id="rejected_R"><span id="no_of_redflags_under_investigation"></span></button>
-    </p>
-  </div>
-
-<table border="0">
-  <tr>
-    <td><button id="resolved_i" style="width:25px; height:25px;"></button></td>
-    <td>number of intervention records that has been resolved</td>
-  </tr>
-  <tr>
-        <td><button id="resolved_R" style="width:25px; height:25px;"></button></td>
-        <td>number of red-flag records that has been resolved</td>
-  </tr>
-  <tr>
-        <td><button id="yet_to_resolved_R" style="width:25px; height:25px;"></button></td>
-        <td>number of red-flag records yet to be resolved</td>
-</tr>
-<tr>
-        <td><button id="yet_to_resolved_i" style="width:25px; height:25px;"></button></td>
-        <td>number of intervention records yet to be resolved</td>
-</tr>
-<tr>
-        <td><button id="rejected_i" style="width:25px; height:25px;"></button></td>
-        <td>number of intervention records rejected</td>
-</tr>
-<tr>
-        <td><button id="rejected_R" style="width:25px; height:25px;"></button></td>
-        <td>number of red-flag records rejected</td>
-</tr>
-
-</table>
+<section>  
+  </head>
+    <body>
+    <h4 style="text-align:center">User Profile Card</h4>
+    <div class="card" id ="profile">
+      
+    </div>
 </section>
 <script src="js/global.js"></script> 
 <script src="js/myscript.js"></script> 
-
- <script src="js/profile.js"></script> 
-
+ <script src="js/user_profile.js"></script> 
 
 </body>
 </html>
